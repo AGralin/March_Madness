@@ -9,7 +9,7 @@ MVP Project Features:
 3. Burn coins of the losing teams
 4. Use "Selection Sunday" ranking to set value expectations of each coin/team
 5. Provide dashboard of the current playoff, total coins/total payout
-6. Create Userfriendly website to buy coins
+6. Create User friendly website to buy coins
 
 -----------------------------------------------------------------------------------
 Background info from EN website:
