@@ -1,12 +1,30 @@
 # March_Madness
-MVP Project Scope: 
-1. payout at the end
-2. Sell 68 coins
-3. Use ranking scale.. set value expectation going in
-4. Payout- Total Coins being bought
-5. Take out the coins of the losing teams
-6. Provide dashboard of the total coins/total payout
-7. Create frontpage 
+Project Name: March Madness
+Team: Adam, Faith, Wade and Yen
+Project Description: Create a betting game using smart contracts on Solidity platform and display on Streamlit website.
+
+MVP Project Features: 
+1. Sell 68 coins representing 68 NBA teams
+2. Payout is at the end
+3. Burn coins of the losing teams
+4. Use "Selection Sunday" ranking to set value expectations of each coin/team
+5. Provide dashboard of the current playoff, total coins/total payout
+6. Create Userfriendly website to buy coins
+
+-----------------------------------------------------------------------------------
+Background info from EN website:
+How many teams participate in ‘March Madness’?
+
+32 of the 68 teams selected are “automatic bids,” meaning they won their conference tournament. The NCAA Selection Committee will choose the remaining 36 teams.
+
+A selection committee ranks the 68 teams on “Selection Sunday,” March 12th this year, based on their regular season performance. Thereafter, four teams will be eliminated in the First Four on March 14th and 15th, leaving 64 teams in the competition. The eight teams in the First Four are the four weakest at-large bids and the four worst automatic bids.
+
+Then, among those 64 teams, the competition is divided into four regions with 16 teams each. The regions are the East, West, South, and Midwest. Teams are rated one through 16 within their regions, determining their seed. The No.1 seed should beat the No.16 seed, theoretically.
+Full screen
+
+![nbamarch](https://en.as.com/ncaa/how-many-teams-are-in-march-madness-how-are-teams-selected-n/)
+
+
 
 Check out: 
 Automatic Market Marker
