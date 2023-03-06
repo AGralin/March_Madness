@@ -1,10 +1,10 @@
 # March_Madness
-Project Name: March Madness
-Team: Adam, Faith, Wade and Yen
+Project Name: March Madness,
+Team: Adam, Faith, Wade and Yen,
 Project Description: Create a betting game using smart contracts on Solidity platform and display on Streamlit website.
 
 MVP Project Features: 
-1. Sell 68 coins representing 68 NBA teams
+1. Sell 68 coins representing 68 NCAA teams
 2. Payout is at the end
 3. Burn coins of the losing teams
 4. Use "Selection Sunday" ranking to set value expectations of each coin/team
