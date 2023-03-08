@@ -1,15 +1,39 @@
 # March_Madness
-Project Name: March Madness,
-Team: Adam, Faith, Wade and Yen,
+Project Name: March Madness
+
+Team: Adam, Faith, Wade and Yen
+
 Project Description: Create a betting game using smart contracts on Solidity platform and display on Streamlit website.
 
 MVP Project Features: 
 1. Sell 68 coins representing 68 NCAA teams
-2. Payout is at the end
-3. Burn coins of the losing teams
+2. Payout is at the end (Distribution)
+3. Crowdsale and Crowdsale Deployer contract to buy the coins
+3. Burn coins of the losing teams: self destruct contract
 4. Use "Selection Sunday" ranking to set value expectations of each coin/team
-5. Provide dashboard of the current playoff, total coins/total payout
-6. Create User friendly website to buy coins
+5. Provide dashboard of the current playoff on Streamlit, total coins/total payout
+6. Create User friendly website to buy coins on Streamlit
+7. Update odds every mint transaction (event) Cron Job
+have a wallet for each team and transfer to winning team.
+
+Approach:
+- have a wallet for each team and transfer to winning team at the end
+- 1 FT
+- 1 Stable coin
+- 1 NFT collector items
+
+Odds:
+
+%	Cum%			
+						
+1	23	69.7%	69.7%		5:1	 $20.00
+2	4	12.1%	81.8%		20:1	 $5.00
+3	4	12.1%	93.9%		25:1	 $4.00
+4	1	3.0%	97.0%		100:1	 $1.00
+5	0	0.0%	97.0%		200:1	 $0.50
+6	0	0.0%	97.0%		300:1	 $0.35
+7	1	3.0%	100.0%		500:1	 $0.20
+8-16	0	0.0%	100.0%		1000:1	 $0.10
 
 -----------------------------------------------------------------------------------
 Background info from EN website:
@@ -30,7 +54,7 @@ Check out:
 Automatic Market Marker
 
 Action Items:
-- Mint one token for each team [Wade, Yen]
+- Mint one coin for each team [Wade, Yen]
 - Determine Ranking Scale for the teams ==> use this to determine the payout odds.
 
 - Research Automatic Market Maker/ Exchange [Adam, Faith]
