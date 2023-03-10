@@ -6,15 +6,18 @@ Team: Adam, Faith, Wade and Yen
 Project Description: Create a betting game using smart contracts on Solidity platform and display on Streamlit website.
 
 MVP Project Features: 
-1. Sell 64 coins representing 64 NCAA teams
-2. Payout is at the end (Distribution)
-3. Crowdsale and Crowdsale Deployer contract to buy the coins
-3. Burn coins of the losing teams: self destruct contract
-4. Use "Selection Sunday" ranking to set value expectations of each coin/team
-5. Provide dashboard of the current playoff on Streamlit, total coins/total payout
-6. Create User friendly website to buy coins on Streamlit
-7. Update odds every mint transaction (event) Cron Job
+1. Sell 64 coins representing 64 NCAA teams - Adam
+2. Payout is at the end (Distribution) Oracle/redeemable - Faith
+3. Create User friendly website to buy tokens on Streamlit- Yen
+4. Provide dashboard of the current playoff on Streamlit, total token/total payout - Wade
+
+?. Crowdsale and Crowdsale Deployer contract to buy the coins
+4. zero out token of the losing teams: self destruct contract
+5. Provide dashboard of the current playoff on Streamlit, total token/total payout
+
+6. Update odds every mint transaction (event) Cron Job
 have a wallet for each team and transfer to winning team.
+7. Use "Selection Sunday" ranking to set value expectations of each coin/team
 
 Approach:
 - have a wallet for each team and transfer to winning team at the end

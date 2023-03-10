@@ -7,8 +7,9 @@ import "@openzeppelin/contracts@4.8.2/access/Ownable.sol";
 import "@openzeppelin/contracts@4.8.2/token/ERC1155/extensions/ERC1155Burnable.sol";
 import "@openzeppelin/contracts@4.8.2/token/ERC1155/extensions/ERC1155Supply.sol";
 
-contract Fanshares is ERC1155, Pausable, Ownable, ERC1155Burnable, ERC1155Supply {
+contract TeamTokens is ERC1155, Pausable, Ownable, ERC1155Burnable, ERC1155Supply {
     constructor() ERC1155("") {}
+    uint256 public mintRate = .05 ether;
 
     function pause() public onlyOwner {
         _pause();
@@ -18,11 +19,12 @@ contract Fanshares is ERC1155, Pausable, Ownable, ERC1155Burnable, ERC1155Supply
         _unpause();
     }
 
-    function mint(address account, uint256 id, uint256 amount)
+    function mint( uint256 id, uint256 amount)
+        payable
         public
-    {
-        _mint(account, id, amount, "");
-        //_mint(msg.sender, teamname, amount, "");
+    {   require(msg.value >= (amount*mintRate), "Not enough Ether!");
+        require(id > 0, "Token doesn't exist");
+        _mint(msg.sender, id, amount, "");
     }
 
     function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
