@@ -6,7 +6,7 @@ Team: Adam, Faith, Wade and Yen
 Project Description: Create a betting game using smart contracts on Solidity platform and display on Streamlit website.
 
 MVP Project Features: 
-1. Sell 68 coins representing 68 NCAA teams
+1. Sell 64 coins representing 64 NCAA teams
 2. Payout is at the end (Distribution)
 3. Crowdsale and Crowdsale Deployer contract to buy the coins
 3. Burn coins of the losing teams: self destruct contract

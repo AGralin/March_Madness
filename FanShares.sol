@@ -22,6 +22,7 @@ contract Fanshares is ERC1155, Pausable, Ownable, ERC1155Burnable, ERC1155Supply
         public
     {
         _mint(account, id, amount, "");
+        //_mint(msg.sender, teamname, amount, "");
     }
 
     function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
