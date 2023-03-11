@@ -9,7 +9,7 @@ import "@openzeppelin/contracts@4.8.2/token/ERC1155/extensions/ERC1155Supply.sol
 
 contract TeamTokens is ERC1155, Pausable, Ownable, ERC1155Burnable, ERC1155Supply {
     constructor() ERC1155("") {}
-    uint256 public mintRate = .05 ether;
+    uint256 public mintRate = 0.005 ether;
 
     function pause() public onlyOwner {
         _pause();
@@ -22,9 +22,9 @@ contract TeamTokens is ERC1155, Pausable, Ownable, ERC1155Burnable, ERC1155Suppl
     function mint(address to, uint256 id, uint256 amount)
         payable
         public
-    {   require(to.balance >= (amount * .005 ether  + mintRate), "Not enough Ether!");
-        require(id >= 0, "Token doesn't exist");
-        amount = amount * .005 ether  + mintRate;
+    {   require(to.balance >= (amount * mintRate), "Not enough ETH");
+        require(id < 64, "Sorry that id does not exist, choose a number between 0 and 63");
+        amount = amount * mintRate;
         _mint(to, id, amount, "");
     }
 
