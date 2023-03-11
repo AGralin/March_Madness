@@ -19,12 +19,13 @@ contract TeamTokens is ERC1155, Pausable, Ownable, ERC1155Burnable, ERC1155Suppl
         _unpause();
     }
 
-    function mint(uint256 id, uint256 amount)
+    function mint(address to, uint256 id, uint256 amount)
         payable
         public
-    {   require(msg.value >= (amount*mintRate), "Not enough Ether!");
-        require(id > 0, "Token doesn't exist");
-        _mint(msg.sender, id, amount, "");
+    {   require(to.balance >= (amount * .005 ether  + mintRate), "Not enough Ether!");
+        require(id >= 0, "Token doesn't exist");
+        amount = amount * .005 ether  + mintRate;
+        _mint(to, id, amount, "");
     }
 
     function mintBatch(address to, uint256[] memory ids, uint256[] memory amounts, bytes memory data)
