@@ -10,27 +10,42 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract MarchMadness is ERC1155, Ownable, Pausable, ERC1155Burnable, ERC1155Supply {
     uint256 public publicPrice = 0.001 ether;
+    bool public publicMintOpen = false;
     constructor() ERC1155("") {}
 
+    // edit function to open public mint
+    function editMintWindows(
+        bool _publicMintOpen
+    ) external onlyOwner {
+        publicMintOpen = _publicMintOpen;
+    }
+    // URI?
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
     }
-
+    // pause function
     function pause() public onlyOwner {
         _pause();
     }
-
+    // unpause function
     function unpause() public onlyOwner {
         _unpause();
     }
-
+    // Public mint function
     function mint(uint256 id, uint256 amount)
         public
         payable
     {
+        require(publicMintOpen, "Public mint is closed");
         require(id < 64, "Sorry that id does not exist, choose a number between 0 and 63");
         require(msg.value == publicPrice * amount, "Not enough ETH");
         _mint(msg.sender, id, amount, "");
+    }
+
+    // Withdraw function
+    function withdraw(address _addr) external onlyOwner {
+        uint256 balance = address(this).balance;
+        payable(_addr).transfer(balance);
     }
 
     function uri(uint256 _id) public view virtual override returns (string memory) {
