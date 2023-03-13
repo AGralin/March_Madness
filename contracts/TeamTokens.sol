@@ -28,7 +28,7 @@ contract TeamTokens is ERC1155, Pausable,Ownable, ERC1155Burnable, ERC1155Supply
         payable
         public
     {   require(msg.value == amount * TOKEN_PRICE + TRANSACTION_FEE, "Incorrect Ether amount");
-        require(id < 64, "Sorry that id does not exist, choose a number between 0 and 63");
+        require(id < 68, "Sorry that id does not exist, choose a number between 0 and 63");
         //mint the token
         _mint(to, id, amount, "");
 
