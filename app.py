@@ -59,12 +59,15 @@ team = {"Miami":0, "Virginia":1, "Duke": 2, "Marquette": 3, "UConn":4,
 "Iowa State":16, "TCU":17, "Arizona":18, "UCLA":19, "Alabama":20, "Tennessee":21,
 "Texas A&M":22, "Missouri":23, "Kentucky":24, "Houston":25, "Saint Mary's":26, "San Diego State":27}
 
+trans_fee = 1000000000000000
+token_cost = 5000000000000000
 # Use a Streamlit component to get the address of the wallet
 address = st.selectbox("Account", options=accounts)
-#address = st.text_input("Account")
+
 
 # Use a Streamlit component to make a bet
 amount = st.number_input("1 token costs 0.005 Ether. How many tokens do you want to purchase?", value = 0)
+value_cost = amount * token_cost + trans_fee
 
 #id_team = st.number_input("Team", value = 0)
 id_team = st.selectbox("Choose Your Favorite Team:", options=team, kwargs=team)
@@ -76,7 +79,7 @@ if st.button("Bet"):
         address,
         team[id_team],
         amount
-    ).transact({'from': address, 'gas': 1000000})
+    ).transact({'from': address,'value': value_cost, 'gas': 100000})
 
     # Celebrate your successful bet placement
     st.balloons()
@@ -99,32 +102,30 @@ id_pick = st.selectbox("Team", key= 0, options=team, kwargs=team)
 #Call function balanceOf in the contract
 tokens = contract.functions.balanceOf(selected_address,team[id_pick]).call()
 
-#Convert Wei to Eth, Eth to Token
-eth1 = tokens/1000000000000000000
-tok1 = eth1/0.005 
-
 #Print number of tokens
-st.write(f"This address owns {round(tok1,2)} tokens")
+st.write(f"This address owns {round(tokens,2)} tokens")
 
 ################################################################################
 # Side bar for the Total Team supply
 ################################################################################
 st.sidebar.markdown("## Total Bet(Tokens) per Team")
 pool_token = 0
-pool_eth = 0
 
 # loop through team dictionary and print out the total token per team
 for i,j in team.items():
     #Call contract function totalSupply
     totaltokens = contract.functions.totalSupply(j).call()
-    #Convert Wei to Eth, Eth to Token
-    eth = totaltokens/1000000000000000000
-    tok = eth/0.005
-    if tok > 0:
+    
+    if totaltokens > 0:
         #print Team and Tokens
-        st.sidebar.write(f"{i}: {round(tok,2)} tokens")
-    pool_token += tok
-    pool_eth += eth
+        st.sidebar.write(f"{i}: {round(totaltokens,2)} tokens")
+    pool_token += totaltokens
 
+# Write the total tokens
 st.sidebar.write(f"Total Tokens: {pool_token}")
-st.sidebar.write(f"Total Pool: {pool_eth} Ether")
+
+
+# Retreive contract balance
+contract_balance = contract.functions.getContractBalance().call()
+contract_balance = contract_balance/1000000000000000000  # 1 ether  = 1000000000000000000
+st.sidebar.write(f"Contract Balance: {contract_balance} Ether")
