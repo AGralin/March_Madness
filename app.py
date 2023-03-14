@@ -69,8 +69,8 @@ team = {"Alabama Crimson Tide":0, "Houston Cougars":1, "Kansas Jayhawks": 2, "Pu
 "Southeast Missouri State Redhawks":63, "Northern Kentucky Norse":64, "Howard Bison":65, 
 "Texas Southern Tigers":66, "Fairleigh Dickinson Knights":67}
 
-trans_fee = 1000000000000000
-token_cost = 5000000000000000
+trans_fee = 1000000000000000 #0.001 Ether
+token_cost = 5000000000000000 #0.005 Ether
 # Use a Streamlit component to get the address of the wallet
 address = st.selectbox("Account", options=accounts)
 
@@ -122,6 +122,15 @@ st.write(f"This address owns {round(tokens,2)} tokens")
 st.sidebar.markdown("## Total Bet(Tokens) per Team")
 pool_token = 0
 
+# call contract_balance
+contract_balance = contract.functions.getContractBalance().call()
+
+# loop through team dictionary and get the total tokens
+for i,j in team.items():
+    #Call contract function totalSupply
+    totaltokens = contract.functions.totalSupply(j).call()
+    pool_token += totaltokens
+
 # loop through team dictionary and print out the total token per team
 for i,j in team.items():
     #Call contract function totalSupply
@@ -130,7 +139,9 @@ for i,j in team.items():
     if totaltokens > 0:
         #print Team and Tokens
         st.sidebar.write(f"{i}: {round(totaltokens,2)} tokens")
-    pool_token += totaltokens
+        st.sidebar.write(f"Odds = {round(pool_token/totaltokens,0)} : 1")
+
+    
 
 # Write the total tokens
 st.sidebar.write(f"Total Tokens: {pool_token}")
