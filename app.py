@@ -39,17 +39,30 @@ contract = load_contract()
 ################################################################################
 # Header
 ################################################################################
-image = Image.open('./Images/marchmadness_logo_ncaa.gif')
-st.image(image, width=300)
-st.header("Welcome to Team Tokens")
-st.write ("Where fans buy tokens and cheer for their favorite NCAA team during the March Madness Tournament")
+def page0():
+    
+    image = Image.open('./Images/marchmadness_logo_ncaa.gif')
+    st.image(image, width=500)
 
+    col1, col2 = st.columns(2)
+    with col1:    
+        st.title("Welcome to Team Tokens")
+        st.write ("Where fans buy tokens and cheer for their favorite NCAA team during the March Madness Tournament")
+    with col2:
+    # display video
+        video_file = open('./Images/giphy360p.mp4', 'rb')
+        video_bytes = video_file.read()
+        st.video(video_bytes,format="video/mp4", start_time=0)
+    
 
-################################################################################
-# Place New Bet
-################################################################################
-
-st.subheader("Place a Bet")
+##################################################################################
+# Define Page 1 as View Current Playoff
+##################################################################################
+def page1():
+    st.title('View Current Playoff')
+    st.markdown("![Bracket](https://www.ncaa.com/_flysystem/public-s3/images/2023-03/2023-march-madness-bracket-march-12.jpg)") 
+    st.write("Check out the [scores](https://www.ncaa.com/scoreboard/basketball-men/d1)")  
+# Identify Accounts
 accounts = w3.eth.accounts
 
 # Identify the teams
@@ -69,55 +82,80 @@ team = {"Alabama Crimson Tide":0, "Houston Cougars":1, "Kansas Jayhawks": 2, "Pu
 "Southeast Missouri State Redhawks":63, "Northern Kentucky Norse":64, "Howard Bison":65, 
 "Texas Southern Tigers":66, "Fairleigh Dickinson Knights":67}
 
-trans_fee = 1000000000000000 #0.001 Ether
-token_cost = 5000000000000000 #0.005 Ether
-# Use a Streamlit component to get the address of the wallet
-address = st.selectbox("Account", options=accounts)
+
+################################################################################
+# Place New Bet
+################################################################################
+def page2():
+    st.title("Place a Bet")
 
 
-# Use a Streamlit component to make a bet
-amount = st.number_input("1 token costs 0.005 Ether. How many tokens do you want to purchase?", value = 0)
-value_cost = amount * token_cost + trans_fee
-
-#id_team = st.number_input("Team", value = 0)
-id_team = st.selectbox("Choose Your Favorite Team:", options=team, kwargs=team)
+    trans_fee = 1000000000000000 #0.001 Ether
+    token_cost = 5000000000000000 #0.005 Ether
+    # Use a Streamlit component to get the address of the wallet
+    address = st.selectbox("Account", options=accounts)
 
 
-if st.button("Bet"):
+    # Use a Streamlit component to make a bet
+    amount = st.number_input("The price of one token is 0.005 Ether and a transaction fee of 0.001 Ether. How many tokens do you want to purchase?", value = 0)
+    value_cost = amount * token_cost + trans_fee
+
+    #id_team = st.number_input("Team", value = 0)
+    id_team = st.selectbox("Choose Your Favorite Team:", options=team, kwargs=team)
+
+
+    if st.button("Bet"):
     # Use the contract to send a transaction to the mint function
-    tx_hash = contract.functions.mint(
-        address,
-        team[id_team],
-        amount
-    ).transact({'from': address,'value': value_cost, 'gas': 100000})
+        tx_hash = contract.functions.mint(
+            address,
+            team[id_team],
+            amount
+        ).transact({'from': address,'value': value_cost, 'gas': 100000})
 
     # Celebrate your successful bet placement
-    st.balloons()
+        st.balloons()
 
-    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-    st.write("Transaction receipt mined:")
-    st.write(dict(receipt))
+        receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+        st.write("Transaction receipt mined:")
+        st.write(dict(receipt))
 
-st.markdown("---")
+    st.markdown("---")
 
 
 ################################################################################
 # Display a Token
 ################################################################################
-st.markdown("## Check Balance of an Account")
+def page3():
+    
+    st.title("Check Balance of an Account")
 
-selected_address = st.selectbox("Select Account", options=accounts)
-id_pick = st.selectbox("Team", key= 0, options=team, kwargs=team)
+    selected_address = st.selectbox("Select Account", options=accounts)
+    id_pick = st.selectbox("Team", key= 0, options=team, kwargs=team)
 
-#Call function balanceOf in the contract
-tokens = contract.functions.balanceOf(selected_address,team[id_pick]).call()
+    #Call function balanceOf in the contract
+    tokens = contract.functions.balanceOf(selected_address,team[id_pick]).call()
 
-#Print number of tokens
-st.write(f"This address owns {round(tokens,2)} tokens")
-
+    #Print number of tokens
+    st.write(f"This address owns {round(tokens,2)} tokens")
 
 ################################################################################
-# Side bar for the Total Team supply
+# Create Menu to display the pages
+################################################################################
+menu = ['Home','View Current Playoff', 'Place a Bet', 'Check Balance of an Account']
+choice = st.sidebar.selectbox('What do you want to do?', menu)
+
+# Show the appropriate page based on the user's choice
+if choice == 'Home':
+    page0()
+elif choice == 'View Current Playoff':
+    page1()
+elif choice == 'Place a Bet':
+    page2()
+elif choice == "Check Balance of an Account":
+    page3()
+
+################################################################################
+# Display sidebar for the Total Team supply
 ################################################################################
 st.sidebar.markdown("## Total Bet(Tokens) per Team")
 pool_token = 0
@@ -141,7 +179,6 @@ for i,j in team.items():
         st.sidebar.write(f"{i}: {round(totaltokens,2)} tokens")
         st.sidebar.write(f"Odds = {round(pool_token/totaltokens,0)} : 1")
 
-    
 
 # Write the total tokens
 st.sidebar.write(f"Total Tokens: {pool_token}")
