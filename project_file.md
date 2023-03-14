@@ -9,19 +9,16 @@ MVP Project Features:
 1. Sell 64 coins representing 64 NCAA teams - Adam Complete
 2. Payout is at the end (Distribution) Oracle/redeemable - Faith/Adam - more research
 3. Create User friendly website to buy tokens on Streamlit- Yen - Complete
-4. Provide dashboard of the current playoff on Streamlit, total token/total payout - Wade - complete
-5. Presentation
-6. Readme file
+4. Provide dashboard of the current playoff on Streamlit, odds total token/total payout - Wade - complete
+5. Presentation template
+6. Readme file draft
 
 March_Madessh api
-5. Provide dashboard of the current playoff on Streamlit, total token/total payout/ sport.io
 ?. Crowdsale and Crowdsale Deployer contract to buy the coins
 4. zero out token of the losing teams: self destruct contract
-
-
 6. Update odds every mint transaction (event) Cron Job
 have a wallet for each team and transfer to winning team.
-7. Use "Selection Sunday" ranking to set value expectations of each coin/team
+7. Use "Selection Sunday" ranking to set value expectations of each coin/team -complete
 
 Approach:
 - have a wallet for each team and transfer to winning team at the end
