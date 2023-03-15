@@ -177,7 +177,7 @@ for i,j in team.items():
     if totaltokens > 0:
         #print Team and Tokens
         st.sidebar.write(f"{i}: {round(totaltokens,2)} tokens")
-        st.sidebar.write(f"Odds = {round(pool_token/totaltokens,0)} : 1")
+        st.sidebar.write(f"Odds = {round(pool_token/totaltokens,1)} : 1")
 
 
 # Write the total tokens
