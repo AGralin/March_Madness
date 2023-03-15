@@ -1,8 +1,10 @@
 # March Madness
 ![Image](./Images/marchmadness_logo_ncaa.gif)
 ## Team Members: Adam, Faith, Wade and Yen
+---
 
-**Project Overview:**
+## Project Overview:
+
 - March Madness betting game using smart contracts.
 - Each of the 64 NCAA teams have their own ERC-1155 token (these tokens are semi-fungible, which allows multiple NFTs to be minted with the same id).
 - There is a public mint function that allows anyone to mint as many tokens as they want for any team.
@@ -11,8 +13,31 @@
 - At the end of March Madness, only the people that minted the winning teams tokens will be payed. 
     - payout = (amount of winners tokens owned / total supply of winners tokens minted) * prize pool
 - Created a simple UI using Streamlit where you can mint and view your balance of each token.
+---
+## Detailed Usage and installation instructions:
 
-Detailed Usage and installation instructions: 
+- **Requirements:**
+
+    - Ganache (private Ethereum blockchain environment)
+    - Metamask with at least two wallets imported from Ganache
+    - Visual Studio Code
+    - Remix IDE
+    - Terminal/GitBash with streamlit installed in dev environment
+- **Instructions:**
+
+    - Start Ganache and open a workspace
+    - Go to remix.ethereum.org in your preferred browser and create a file that ends in ".sol"
+    - Copy the contents of the TeamTokens.sol file and paste it into the solidity file you created in remix
+    - Compile your solidity file
+    - Go to "DEPLOY & RUN TRANSACTIONS" and select Metamask in the Environment dropdown
+    - Deploy the contract and confirm the transaction in Metamask
+    - Once your contract is deployed, copy the contract address and paste it into the .env file where it says "SMART_CONTRACT_ADDRESS"
+    - In remix, go to "SOLIDITY COMPILER" and copy the ABI
+    - In Visual Studio Code, open the "TeamTokens_abi.json" file and paste the ABI you copied from remix
+    - Ensure that you saved the changes made to the .env and .json files
+    - Open Terminal/GitBash and cd into the correct folder
+    - Activate dev environment and type "streamlit run app.py" (this should open the interface in your browser automatically)
+---
 
 Data Collection and Preparation:
 
