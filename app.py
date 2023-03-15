@@ -110,11 +110,10 @@ def page2():
             address,
             team[id_team],
             amount
-        ).transact({'from': address,'value': value_cost, 'gas': 100000})
+        ).transact({'from': address,'value': value_cost, 'gas': 1000000})
 
     # Celebrate your successful bet placement
         st.balloons()
-
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
         st.write("Transaction receipt mined:")
         st.write(dict(receipt))
