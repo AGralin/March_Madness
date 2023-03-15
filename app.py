@@ -111,7 +111,6 @@ def page2():
             team[id_team],
             amount
         ).transact({'from': address,'value': value_cost, 'gas': 1000000})
-
     # Celebrate your successful bet placement
         st.balloons()
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
@@ -138,13 +137,41 @@ def page3():
     st.write(f"This address owns {round(tokens,2)} tokens")
 
 ################################################################################
+# Distribution of prize pool to winning team
+################################################################################
+def page4():
+    st.title("Distribute Prize Pool")
+    address = st.selectbox("Account", options=accounts)
+    winning_team = st.selectbox("Winning Team", options=team)
+
+
+    if st.button("Distribute"):
+    # Use the contract to send a transaction to the distribute function
+        tx_hash = contract.functions.distribute(
+            team[winning_team]
+        ).transact({'from': address, 'gas': 1000000})
+
+    # Celebrate your successful distribution
+        st.balloons()
+        receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+        st.write("Transaction receipt mined:")
+        st.write(dict(receipt))
+    
+    if st.button("Burn All Tokens"):
+        tx = contract.functions.burnAll().transact({'from': address, 'gas': 1000000})
+
+    st.markdown("----")
+
+    
+
+################################################################################
 # Create Menu to display the pages
 ################################################################################
-menu = ['Home','View Current Playoff', 'Place a Bet', 'Check Balance of an Account']
+menu = ['Go Home','View Current Playoff', 'Place a Bet', 'Check Balance of an Account', 'Distribute Prize Pool']
 choice = st.sidebar.selectbox('What do you want to do?', menu)
 
 # Show the appropriate page based on the user's choice
-if choice == 'Home':
+if choice == 'Go Home':
     page0()
 elif choice == 'View Current Playoff':
     page1()
@@ -152,6 +179,8 @@ elif choice == 'Place a Bet':
     page2()
 elif choice == "Check Balance of an Account":
     page3()
+elif choice == "Distribute Prize Pool":
+    page4()
 
 ################################################################################
 # Display sidebar for the Total Team supply

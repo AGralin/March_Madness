@@ -33,12 +33,12 @@ contract TeamTokens is ERC1155, Pausable,Ownable, ERC1155Burnable, ERC1155Supply
     function unpause() public onlyOwner {
         _unpause();
     }
-    // Mint th tokens and charge the ether
+    // Mint the tokens and charge the ether
     function mint(address to, uint256 id, uint256 amount)
         payable
         public
     {   require(msg.value == amount * TOKEN_PRICE + TRANSACTION_FEE, "Incorrect Ether amount");
-        require(id < 68, "Sorry that id does not exist, choose a number between 0 and 63");
+        require(id < 68, "Sorry that id does not exist, choose a number between 0 and 67");
         //mint the token
         _mint(to, id, amount, "");
 
@@ -58,40 +58,59 @@ contract TeamTokens is ERC1155, Pausable,Ownable, ERC1155Burnable, ERC1155Supply
     receive () external payable {
 
     }
-    // Distribute pool to the winning team
+    // distribute pool to the winning team
     function distribute( uint256 tokenId) public onlyOwner {
 
         //Define variables
         address payable buyer;
         uint256 totalAmount;
 
-        // retreive total supply for that token or team
+        // retrieve total supply for that token or team
         uint256 supply = totalSupply(tokenId);
 
-        // retreive the contract pool 
+        // retrieve the contract pool 
         uint256 contract_balance = address(this).balance;
 
         // Loop through to find the winning team and payout to the purchaser(s)
         for (uint256 i = 0; i < balanceIndex; i++){
             //if the purchaser bought the winning team
             if (balances[i].tokenId== tokenId){
-                // Retreive the address
+                // retrieve the address
                 buyer = balances[i].buyer;
-                // Retreive the amount
+
+                // retrieve the amount
                 totalAmount = balances[i].amount;
+
                 // pool/number of token sold for the winning team * amount that the purchaser held
                 totalAmount = (contract_balance/supply) * totalAmount ;
+                
                 //transfer the ether
                 buyer.transfer(totalAmount);
-                //zero out the amount
+
+                // burn the token once it is redeemed
+                _burn(balances[i].buyer,balances[i].tokenId,balances[i].amount);
+
+                //zero out the amount in the array
                 balances[i].amount = 0;
+
             }
             
         }
 
     }
 
-    // Get the contract balance (pool)
+    //Burn all tokens once we distributed the pool
+    function burnAll() public onlyOwner{
+        for (uint256 i = 0; i < balanceIndex; i++){
+            if (balances[i].amount>0){
+                // burn the token once they redeem
+                _burn(balances[i].buyer,balances[i].tokenId,balances[i].amount);
+                balances[i].amount = 0;
+            }
+        }
+    }
+
+    // Get the contract balance (Prize Pool)
     function getContractBalance() external view returns (uint256) {
         // Get the balance of the contract's address
         return address(this).balance;
