@@ -10,8 +10,18 @@ import "@openzeppelin/contracts@4.8.2/token/ERC1155/extensions/ERC1155Supply.sol
 contract TeamTokens is ERC1155, Pausable,Ownable, ERC1155Burnable, ERC1155Supply {
 
     uint256 public constant TOKEN_PRICE = .005 ether; 
-    uint256 public constant TRANSACTION_FEE = .001 ether;
+    uint256 public constant TRANSACTION_FEE =.001 ether;
+    uint256 private balanceIndex = 0;
 
+    //Define the struct
+    struct Transaction{
+    uint256 tokenId;
+    address payable buyer;
+    uint256 amount;    
+    }
+
+    //array of Transaction struct
+    Transaction[] private balances;
 
     constructor() ERC1155("") {}
 
@@ -38,10 +48,46 @@ contract TeamTokens is ERC1155, Pausable,Ownable, ERC1155Burnable, ERC1155Supply
 
         //pay the owner the transaction fee
         payable(owner()).transfer(TRANSACTION_FEE);
+
+        //update the struct
+        balances.push(Transaction(id,payable(msg.sender),amount));
+        balanceIndex += 1;
     }
     
     // receive the ether for the contract
     receive () external payable {
+
+    }
+    // Distribute pool to the winning team
+    function distribute( uint256 tokenId) public onlyOwner {
+
+        //Define variables
+        address payable buyer;
+        uint256 totalAmount;
+
+        // retreive total supply for that token or team
+        uint256 supply = totalSupply(tokenId);
+
+        // retreive the contract pool 
+        uint256 contract_balance = address(this).balance;
+
+        // Loop through to find the winning team and payout to the purchaser(s)
+        for (uint256 i = 0; i < balanceIndex; i++){
+            //if the purchaser bought the winning team
+            if (balances[i].tokenId== tokenId){
+                // Retreive the address
+                buyer = balances[i].buyer;
+                // Retreive the amount
+                totalAmount = balances[i].amount;
+                // pool/number of token sold for the winning team * amount that the purchaser held
+                totalAmount = (contract_balance/supply) * totalAmount ;
+                //transfer the ether
+                buyer.transfer(totalAmount);
+                //zero out the amount
+                balances[i].amount = 0;
+            }
+            
+        }
 
     }
 
