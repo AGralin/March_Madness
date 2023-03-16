@@ -42,6 +42,12 @@
 
 Data Collection and Preparation:
 
+    - OpenZeppelin Github:
+        - https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC1155
+    - Contracts Wizard (template for creating smart contracts)
+        - https://docs.openzeppelin.com/contracts/4.x/wizard
+---
+
 Examples of the application or results:
 
 Summary of the analysis: 
