@@ -38,14 +38,14 @@
     - Ensure that you saved the changes made to the .env and .json files
     - Open Terminal/GitBash and cd into the correct folder
     - Activate dev environment and type "streamlit run app.py" (this should open the interface in your browser automatically)
----
+--- 
 
-Data Collection and Preparation:
+## Data Collection and Preparation:
 
-    - OpenZeppelin Github:
-        - https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC1155
-    - Contracts Wizard (template for creating smart contracts)
-        - https://docs.openzeppelin.com/contracts/4.x/wizard
+- **OpenZeppelin Github:**
+    - https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/token/ERC1155
+- **Contracts Wizard (template for creating smart contracts):**
+    - https://docs.openzeppelin.com/contracts/4.x/wizard
 ---
 
 Examples of the application or results:
@@ -54,4 +54,5 @@ Summary of the analysis:
 
 Note: Video of app?
 
+---
 Presentation: https://docs.google.com/presentation/d/1meHhTFnapBm_1EzukVolUBrP-xQTg6g2/edit?usp=share_link&ouid=112227308253472634696&rtpof=true&sd=true
