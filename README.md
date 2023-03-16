@@ -10,7 +10,7 @@
 - There is a public mint function that allows anyone to mint as many tokens as they want for any team.
 - The funds from the mint go directly into the prize pool.
     - This means that the odds change every time someone mints.
-- At the end of March Madness, only the people that minted the winning teams tokens will be payed. 
+- At the end of March Madness, only the people that own the winning teams tokens will be payed. 
     - payout = (amount of winners tokens owned / total supply of winners tokens minted) * prize pool
 - Created a simple UI using Streamlit where you can mint and view your balance of each token.
 ---
