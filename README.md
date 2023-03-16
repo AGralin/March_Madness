@@ -20,9 +20,10 @@
 
     - Ganache (private Ethereum blockchain environment)
     - Metamask with at least two wallets imported from Ganache
-    - Visual Studio Code
     - Remix IDE
+    - Visual Studio Code
     - Terminal/GitBash with streamlit installed in dev environment
+    - Copy of this repository on your local computer
 - **Instructions:**
 
     - Start Ganache and open a workspace
