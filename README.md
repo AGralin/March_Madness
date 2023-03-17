@@ -58,7 +58,7 @@
 
 
 ----
-## Summary of the analysis/Next Steps: 
+## Next Steps: 
 - Address the following questions: Does an oracle make a smart contract more trustworthy to players? Or more vulnerable to hacks and people would prefer the contract owner distribute winnings?
 - Add metadata using Ipfs
 - Research the legality - both for sports betting and crypto. Need legal opinions.
