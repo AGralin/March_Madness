@@ -52,7 +52,7 @@
 
 ---
 
-## Examples of the application or results:
+## Example of the application:
 ![ezgif-3-b3e3e49635](https://user-images.githubusercontent.com/113050753/225962359-84407f56-72ca-43e1-a3a5-5b9383239a0a.gif)
 
 
