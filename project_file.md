@@ -11,7 +11,7 @@ MVP Project Features:
 3. Create User friendly website to buy tokens on Streamlit- Yen - Complete
 4. Provide dashboard of the current playoff on Streamlit, odds total token/total payout - Wade - complete
 5. Presentation template
-6. Readme file draft
+6. Readme file draft - 
 
 March_Madessh api
 ?. Crowdsale and Crowdsale Deployer contract to buy the coins
@@ -19,6 +19,11 @@ March_Madessh api
 6. Update odds every mint transaction (event) Cron Job
 have a wallet for each team and transfer to winning team.
 7. Use "Selection Sunday" ranking to set value expectations of each coin/team -complete
+8. Publish on the internet
+- authenicate into the account (sign in)
+- integrate api metamask ether wallet (smart contract) and app.py
+- integrate chainlink
+- 
 
 Approach:
 - have a wallet for each team and transfer to winning team at the end
