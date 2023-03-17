@@ -50,15 +50,19 @@
 - **NCAA Website:**
     - https://www.ncaa.com/scoreboard/basketball-men/d1
 
-Examples of the application or results:
+---
 
-Summary of the analysis/Next Steps: 
+## Examples of the application or results:
+![ezgif-3-b3e3e49635](https://user-images.githubusercontent.com/113050753/225962359-84407f56-72ca-43e1-a3a5-5b9383239a0a.gif)
+
+
+
+----
+## Summary of the analysis/Next Steps: 
 - Address the following questions: Does an oracle make a smart contract more trustworthy to players? Or more vulnerable to hacks and people would prefer the contract owner distribute winnings?
 - Add metadata using Ipfs
 - Research the legality - both for sports betting and crypto. Need legal opinions.
 - Launch DApp
-
-Note: Video of app? - Adam
 
 ---
 Presentation: https://docs.google.com/presentation/d/1meHhTFnapBm_1EzukVolUBrP-xQTg6g2/edit?usp=share_link&ouid=112227308253472634696&rtpof=true&sd=true
