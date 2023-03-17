@@ -48,7 +48,7 @@
     - https://docs.openzeppelin.com/contracts/4.x/wizard
 
 - **NCAA Website:**
-    -https://www.ncaa.com/scoreboard/basketball-men/d1
+    - https://www.ncaa.com/scoreboard/basketball-men/d1
 
 Examples of the application or results:
 
