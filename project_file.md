@@ -10,12 +10,12 @@ MVP Project Features:
 2. Payout is at the end (Distribution) Oracle/redeemable - Faith/Adam - more research
 3. Create User friendly website to buy tokens on Streamlit- Yen - Complete
 4. Provide dashboard of the current playoff on Streamlit, odds total token/total payout - Wade - complete
-5. Presentation template
-6. Readme file draft - 
+5. zero out token of the losing teams: self destruct contract -Yen complete
+6. Presentation complete
+7. Readme file - Adam - complete
 
 March_Madessh api
 ?. Crowdsale and Crowdsale Deployer contract to buy the coins
-4. zero out token of the losing teams: self destruct contract
 6. Update odds every mint transaction (event) Cron Job
 have a wallet for each team and transfer to winning team.
 7. Use "Selection Sunday" ranking to set value expectations of each coin/team -complete

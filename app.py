@@ -61,6 +61,8 @@ def page0():
 def page1():
     st.title('View Current Playoff')
     st.markdown("![Bracket](https://www.ncaa.com/_flysystem/public-s3/images/2023-03/2023-march-madness-bracket-march-12.jpg)") 
+    #st.write(f'<iframe src="https://www.ncaa.com/march-madness-live/bracket"></iframe>',
+    #    unsafe_allow_html=True)
     st.write("Check out the [scores](https://www.ncaa.com/scoreboard/basketball-men/d1)")  
 # Identify Accounts
 accounts = w3.eth.accounts
@@ -140,12 +142,12 @@ def page3():
 # Distribution of prize pool to winning team
 ################################################################################
 def page4():
-    st.title("Distribute Prize Pool")
+    st.title("Redeem Your Winning Tokens")
     address = st.selectbox("Account", options=accounts)
     winning_team = st.selectbox("Winning Team", options=team)
 
 
-    if st.button("Distribute"):
+    if st.button("Redeem"):
     # Use the contract to send a transaction to the distribute function
         tx_hash = contract.functions.distribute(
             team[winning_team]
@@ -167,7 +169,7 @@ def page4():
 ################################################################################
 # Create Menu to display the pages
 ################################################################################
-menu = ['Go Home','View Current Playoff', 'Place a Bet', 'Check Balance of an Account', 'Distribute Prize Pool']
+menu = ['Go Home','View Current Playoff', 'Place a Bet', 'Check Balance of an Account', 'Redeem Your Winning Tokens']
 choice = st.sidebar.selectbox('What do you want to do?', menu)
 
 # Show the appropriate page based on the user's choice
@@ -179,7 +181,7 @@ elif choice == 'Place a Bet':
     page2()
 elif choice == "Check Balance of an Account":
     page3()
-elif choice == "Distribute Prize Pool":
+elif choice == "Redeem Your Winning Tokens":
     page4()
 
 ################################################################################
