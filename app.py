@@ -66,6 +66,7 @@ def page1():
 accounts = w3.eth.accounts
 
 # Identify the teams
+
 team = {"Alabama Crimson Tide":0, "Houston Cougars":1, "Kansas Jayhawks": 2, "Purdue Boilermakers": 3, "Arizona Wildcats":4,
 "Texas Longhorns": 5, "UCLA Bruins":6, "Marquette Golden Eagles":7, "Baylor Bears":8, "Xavier Musketeers":9,
 "Gonzaga Bulldogs":10, "Kansas State Wildcats":11, "Virginia Cavaliers": 12, "Indiana Hoosiers":13, "UConn Huskies":14, "Tennessee Volunteers":15,
@@ -73,15 +74,14 @@ team = {"Alabama Crimson Tide":0, "Houston Cougars":1, "Kansas Jayhawks": 2, "Pu
 "TCU Horned Frogs":22, "Kentucky Wildcats":23, "Missouri Tigers":24, "Texas A&M Aggies":25, "Northwestern Wildcats":26, "Michigan State Spartans":27,
 "Maryland Terrapins":28,"Iowa Hawkeyes" :29, "Arkansas Razorbacks":30, "Memphis Tigers":31, "West Virginia Mountaineers":32,
 "Auburn Tigers":33, "Illinois Fighting Illini":34, "Florida Atlantic Owls":35, "Utah State Aggies":36, "Penn State Nittany Lions" :37,
-"Boise State Broncos":38, "USC Trojans":39, "NC State Wolfpack":40, "Mississippi State Bulldogs":41,
-"Pittsburgh Panthers":42, "Arizona State Sun Devils":43, "Nevada Wolf Pack":44, "Providence Friars":45, 
+"Boise State Broncos":38, "USC Trojans":39, "NC State Wolfpack":40, "Northern Kentucky Norse":41,
+"Pittsburgh Panthers":42, "Arizona State Sun Devils":43, "Fairleigh Dickinson Knights":44, "Providence Friars":45, 
 "Charleston Cougars":46, "Drake Bulldogs":47, "VCU Rams":48, "Oral Roberts Golden Eagles":49, "Furman Paladins":50,
 "Kent State Golden Flashes":51, "Iona Gaels":52, "Louisiana Ragin' Cajuns":53, "UC Santa Barbara Gauchos":54, 
 "Kennesaw State Owls":55, "Grand Canyon Lopes":56, "Montana State Bobcats":57, "Princeton Tigers":58, 
 "Colgate Raiders":59, "UNC Asheville Bulldogs" :60, "Vermont Catamounts":61, "Texas A&M-Corpus Christi Islanders":62, 
-"Southeast Missouri State Redhawks":63, "Northern Kentucky Norse":64, "Howard Bison":65, 
-"Texas Southern Tigers":66, "Fairleigh Dickinson Knights":67}
-
+"Howard Bison":63
+}
 
 ################################################################################
 # Place New Bet
