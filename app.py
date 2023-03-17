@@ -139,7 +139,7 @@ def page3():
     st.write(f"This address owns {round(tokens,2)} tokens")
 
 ################################################################################
-# Distribution of prize pool to winning team
+# Redeem Your Winning Tokens
 ################################################################################
 def page4():
     st.title("Redeem Your Winning Tokens")
@@ -153,7 +153,7 @@ def page4():
             team[winning_team]
         ).transact({'from': address, 'gas': 1000000})
 
-    # Celebrate your successful distribution
+    # Celebrate your successful Redemption
         st.balloons()
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
         st.write("Transaction receipt mined:")
