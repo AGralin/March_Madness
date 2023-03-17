@@ -17,15 +17,15 @@
 ## Detailed Usage and installation instructions:
 
 - **Requirements:**
-
     - Ganache (private Ethereum blockchain environment)
     - Metamask with at least two wallets imported from Ganache
     - Remix IDE: https://remix.ethereum.org/
     - Visual Studio Code
     - Terminal/GitBash with Streamlit installed in dev environment
     - Copy of this repository on your local computer
-- **Instructions:**
+    
 
+- **Instructions:**
     - Start Ganache and open a workspace
     - Go to remix.ethereum.org in your preferred browser and create a file that ends in ".sol"
     - Copy the contents of the TeamTokens.sol file and paste it into the solidity file you created in remix
